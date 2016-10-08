@@ -54,16 +54,16 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _home = __webpack_require__(172);
+	var _Home = __webpack_require__(172);
 
-	var _home2 = _interopRequireDefault(_home);
+	var _Home2 = _interopRequireDefault(_Home);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//main.js
 	__webpack_require__(173);
 
-	_reactDom2.default.render(_react2.default.createElement(_home2.default, null), document.getElementById('example'));
+	_reactDom2.default.render(_react2.default.createElement(_Home2.default, null), document.getElementById('example'));
 
 /***/ },
 /* 1 */
@@ -21438,6 +21438,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -21454,8 +21458,8 @@
 
 	//import SearchBar from '../components/searchbar.js';
 
-	var Home = function (_React$Component) {
-	  _inherits(Home, _React$Component);
+	var Home = function (_Component) {
+	  _inherits(Home, _Component);
 
 	  function Home() {
 	    _classCallCheck(this, Home);
@@ -21481,7 +21485,9 @@
 	  }]);
 
 	  return Home;
-	}(_react2.default.Component);
+	}(_react.Component);
+
+	exports.default = Home;
 
 /***/ },
 /* 173 */
