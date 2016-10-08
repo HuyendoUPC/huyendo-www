@@ -5,8 +5,8 @@ import * as HomeActions from '../actions';
 
 import { FormGroup, FormControl, Checkbox } from 'react-bootstrap';
 
-import TripList from '../components/triplist';
-import SearchBar from '../components/Searchbar';
+import TripList from '../components/Triplist';
+import Searchbar from '../components/Searchbar';
 import Find from '../components/Find';
 
 class Home extends Component {
@@ -27,32 +27,62 @@ class Home extends Component {
 
   renderInSearch() {
     const { inOut } = this.state;
+    const { dispatch } = this.props;
     if (inOut) {
       return (
         <div>
           <h3>Where do you want to end up?</h3>
-          <FormGroup bsSize="large">
-            <FormControl type="text" placeholder="Search.." />
-          </FormGroup>
+          <Searchbar placeholder="Arrival City" dispatch={dispatch} action={HomeActions.setInCity} />
         </div>
       );
     }  
   }
 
+  renderOutSearch() {
+    let { dispatch } = this.props;
+    return (
+       <Searchbar placeholder="Departure city" dispatch={dispatch} action={HomeActions.setOutCity} />
+    );
+  }
+
+  renderCitySearch() {
+    let { dispatch } = this.props;
+    return (
+          
+       <Searchbar placeholder="Add City" dispatch={dispatch} action={HomeActions.addCity} />
+    );
+  }
+
+  outCity() {
+    const { outCity } = this.props;
+    console.log(outCity);
+    return (
+      <h3>{ outCity.outCity }</h3>    
+    );
+  }
+
+  inCity() {
+    const { inCity } = this.props;
+    return (
+      <h3>{ inCity.inCity }</h3>    
+    );
+  }
+
   render () {
+    const { cities, outCity, inCity } = this.props;
     return (
         <div className="trips">
           <div className="trips__search">
             <h3>Where do you want to fly from?</h3>
-            <FormGroup bsSize="large">
-              <FormControl type="text" placeholder="Search.." />
-            </FormGroup>
-            <SearchBar />
+            { this.renderOutSearch() }
             { this.renderInSearch() }
             <Checkbox ref="inOut" onChange={ this.toggleInSearch } >I don&#39;t want to end where I started</Checkbox>
+            <h4>Flying from: { this.outCity() }</h4>
+            <h4>Ending at: { this.inCity() }</h4>
           </div>
           <div className="trips__list">
-            <TripList />
+            { this.renderCitySearch() }
+            <TripList cities={ cities }/>
           </div>
           <div className="trips__find">
             <Find />
@@ -72,8 +102,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({HomeActions}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

@@ -34,6 +34,7 @@ export const removeCity = (id) => {
 }
 
 export const setOutCity = (outCity) => {
+  console.log('out city action');
   return {
     type: SET_OUT_CITY,
     outCity

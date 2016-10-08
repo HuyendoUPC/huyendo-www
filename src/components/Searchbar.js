@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import Search from 'react-search';
-import { InputGroup } from 'react-bootstrap';
+import Search from './Search';
+import { FormGroup } from 'react-bootstrap';
 
 class SearchBar extends Component {
   constructor (props) {
     super(props)
     this.state = { airports: [] }
+    this.respondToChoices = this.respondToChoices.bind(this);
+    this.getItemsAsync = this.getItemsAsync.bind(this);
   }
 
   getItemsAsync (searchValue, cb) {
@@ -27,20 +29,25 @@ class SearchBar extends Component {
   }
 
   respondToChoices (list) {
-    console.log(list)
+    const { action, dispatch } = this.props;
+    let airport = list.pop();
+    if (airport) {
+      dispatch(action(airport.value));
+    }
   }
 
   render () {
+    const { placeholder } = this.props;
     return (
-      <InputGroup>
+      <FormGroup bsSize="lg">
         <Search className="form-control"
                 items={this.state.airports}
-                placeholder="Enter departure city"
+                placeholder={ placeholder }
                 NotFoundPlaceholder="No matching airports found"
                 multiple={true}
-                onItemsChanged={this.respondToChoices.bind(this)}
-                getItemsAsync={this.getItemsAsync.bind(this)} />
-      </InputGroup>
+                onItemsChanged={this.respondToChoices}
+                getItemsAsync={this.getItemsAsync} />
+      </FormGroup>
     )
   }
 }
