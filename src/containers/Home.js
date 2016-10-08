@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Checkbox } from 'react-bootstrap';
 
 import TripList from '../components/triplist';
 import SearchBar from '../components/Searchbar';
+import Find from '../components/Find';
 
 class Home extends Component {
   constructor(props) {
@@ -52,6 +53,9 @@ class Home extends Component {
           </div>
           <div className="trips__list">
             <TripList />
+          </div>
+          <div className="trips__find">
+            <Find />
           </div>
         </div>
     );
