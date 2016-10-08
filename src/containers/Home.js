@@ -3,12 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as HomeActions from '../actions';
 
-import SearchBar from '../components/Searchbar.js';
-
 import { FormGroup, FormControl, Checkbox } from 'react-bootstrap';
 
 import TripList from '../components/triplist';
-import SearchBar from '../components/Searchbar.js';
+import SearchBar from '../components/Searchbar';
 
 class Home extends Component {
   constructor(props) {
@@ -48,7 +46,7 @@ class Home extends Component {
             <FormGroup bsSize="large">
               <FormControl type="text" placeholder="Search.." />
             </FormGroup>
-            <Searchbar />
+            <SearchBar />
             { this.renderInSearch() }
             <Checkbox ref="inOut" onChange={ this.toggleInSearch } >I don&#39;t want to end where I started</Checkbox>
           </div>

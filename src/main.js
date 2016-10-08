@@ -7,7 +7,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import homeReducers from './reducers';
-import Home from './containers/home';
+import Home from './containers/Home';
 
 let store = createStore(homeReducers);
 
