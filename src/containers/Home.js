@@ -99,7 +99,7 @@ class Home extends Component {
             <h4>Ending at: { this.inCity() }</h4>
             <h3>What date do you want do leave?</h3>
             <FormGroup>
-              <DatePicker className="datepicker" value={ date } onChange={this.dateChange} />
+              <DatePicker className="datepicker" value={ date } onChange={this.dateChange} dateFormat="DD/MM/YYYY"/>
             </FormGroup>
           </div>
           <div className="trips__list">
