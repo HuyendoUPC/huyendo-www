@@ -10,6 +10,7 @@ import DatePicker from 'react-bootstrap-date-picker';
 import TripList from '../components/Triplist';
 import Searchbar from '../components/Searchbar';
 import Find from '../components/Find';
+import TripResults from '../components/TripResults';
 
 class Home extends Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Home extends Component {
   }
 
   render () {
-    const { cities, outCity, inCity, date, dispatch } = this.props;
+    const { cities, outCity, inCity, date, trip, dispatch } = this.props;
     const { localDate } = this.state;
     return (
         <div className="trips">
@@ -110,18 +111,22 @@ class Home extends Component {
           <div className="trips__find">
             <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} />
           </div>
+          <div className="trips__results">
+            <TripResults trip={ trip }/>
+          </div>
         </div>
     );
   }
 };
 
 const mapStateToProps = (state) => {
-  const { date, inCity, outCity, cities } = state;
+  const { date, inCity, outCity, cities, trip } = state;
   return {
     date,
     inCity,
     outCity,
-    cities
+    cities,
+    trip
   };
 }
 

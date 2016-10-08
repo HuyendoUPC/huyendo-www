@@ -68,15 +68,19 @@ const tripFetchSuccess = (data) => {
 
 export const getTrip = (tripData) => {
   return (dispatch) => {
+    console.log(JSON.stringify(tripData));
     return fetch('http://localhost:8080/api/best_route', {
-          type: "POST",
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          body: tripData,
-        }).then((response) => {
-          response.json();
-        }).then((json) => {
-          console.log('success', response);
-          dispatch(tripFetchSuccess(respnse));
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tripData)
+      }).then((response) => {
+        return response.json().then((json) => {
+          console.log(json);
+          dispatch(tripFetchSuccess(json));
         });
-  }
+      });
+    }
 }

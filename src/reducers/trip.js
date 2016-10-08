@@ -7,6 +7,7 @@ import {
 const trip = (state = {}, action) => {
   switch (action.type) {
     case TRIP_FETCH_SUCCESS:
+      console.log(action);
       return {
         trips: action.trips
       }
