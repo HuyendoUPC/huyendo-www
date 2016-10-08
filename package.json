@@ -25,6 +25,7 @@
     "less-loader": "^2.2.3",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
+    "react-bootstrap-date-picker": "^3.7.0",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-search": "^2.0.3",

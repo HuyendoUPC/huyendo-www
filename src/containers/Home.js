@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as HomeActions from '../actions';
 
 import { FormGroup, FormControl, Checkbox } from 'react-bootstrap';
+import DatePicker from 'react-bootstrap-date-picker';
 
 import TripList from '../components/Triplist';
 import Searchbar from '../components/Searchbar';
@@ -13,9 +14,11 @@ import Find from '../components/Find';
 class Home extends Component {
   constructor(props) {
     super();
-    this.state = { inOut: false };
+    let now = new Date().toISOString();
+    this.state = { inOut: false, date: now };
     this.toggleInSearch = this.toggleInSearch.bind(this);
     this.renderInSearch = this.renderInSearch.bind(this);
+    this.dateChange = this.dateChange.bind(this);
   }
 
   toggleInSearch() {
@@ -61,6 +64,13 @@ class Home extends Component {
     );
   }
 
+  dateChange(value) {
+    let { dispatch } = this.props;
+    if (value) {
+      dispatch(HomeActions.setDate(value));
+    }
+  }
+
   outCity() {
     const { outCity } = this.props;
     return (
@@ -77,6 +87,7 @@ class Home extends Component {
 
   render () {
     const { cities, outCity, inCity } = this.props;
+    const { date } = this.state;
     return (
         <div className="trips">
           <div className="trips__search">
@@ -86,8 +97,13 @@ class Home extends Component {
             <Checkbox ref="inOut" onChange={ this.toggleInSearch } >I don&#39;t want to end where I started</Checkbox>
             <h4>Flying from: { this.outCity() }</h4>
             <h4>Ending at: { this.inCity() }</h4>
+            <h3>What date do you want do leave?</h3>
+            <FormGroup>
+              <DatePicker className="datepicker" value={ date } onChange={this.dateChange} />
+            </FormGroup>
           </div>
           <div className="trips__list">
+            <h3>Which cities do you want to travel to?</h3>
             { this.renderCitySearch() }
             <TripList cities={ cities }/>
           </div>
