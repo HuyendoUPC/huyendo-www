@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 
 require('../stylesheets/main.less');
 
-import Home from './containers/home.js';
+import Home from './containers/Home.js';
 
 ReactDOM.render(
-  <Home />,
+  <Home></Home>,
   document.getElementById('example')
 );
