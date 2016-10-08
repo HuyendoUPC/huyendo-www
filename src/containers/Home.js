@@ -7,8 +7,8 @@ import SearchBar from '../components/Searchbar.js';
 
 import { FormGroup, FormControl, Checkbox } from 'react-bootstrap';
 
-//import SearchBar from '../components/searchbar';
 import TripList from '../components/triplist';
+import SearchBar from '../components/Searchbar.js';
 
 class Home extends Component {
   constructor(props) {
