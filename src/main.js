@@ -1,12 +1,18 @@
 //main.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 require('../stylesheets/main.less');
 
-import Home from './containers/Home.js';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import homeReducers from './reducers'
+import App from './components/App'
+
+let store = createStore(homeReducers);
 
 ReactDOM.render(
-  <Home></Home>,
-  document.getElementById('example')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
