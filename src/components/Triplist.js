@@ -5,7 +5,7 @@ class TripList extends Component {
   render() {
     const { cities } = this.props;
     return (
-        <Table>
+        <table>
         <thead>
         <tr>
         <th className="trips__destination">Destination</th>
@@ -17,12 +17,12 @@ class TripList extends Component {
                                 return (  
                                     <tr>
                                     <td>{ city.name }</td>
-                                    <td><input type="number" min="1" max="30" step="1" value ={ city.days } /></td>
+                                    <td><input type="number" min="1" max="30" step="1" className="trips__numDays"/></td>
                                     </tr>
                                     );                      
                               })}
         </tbody>
-        </Table>
+        </table>
         );
   }
 };
