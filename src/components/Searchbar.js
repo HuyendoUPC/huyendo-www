@@ -15,7 +15,7 @@ class SearchBar extends Component {
     }).then((results) => {
       if ( results != undefined ) {
         let items = results.map(function (element) {
-          return {id: element.value, value: element.label}
+          return {value: element.label}
         })
         this.setState({ airports: items })
         cb(searchValue)
@@ -23,11 +23,18 @@ class SearchBar extends Component {
     });
   }
 
+  respondToChoices (list) {
+    console.log(list)
+  }
+
   render () {
     return (
       <div>
         <Search items={this.state.airports}
                 placeholder="Enter departure city"
+                NotFoundPlaceholder="No matching airports found"
+                multiple={true}
+                onItemsChanged={this.respondToChoices.bind(this)}
                 getItemsAsync={this.getItemsAsync.bind(this)} />
       </div>
     )
