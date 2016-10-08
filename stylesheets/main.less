@@ -1,5 +1,31 @@
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+}
+
+
 .welcome {
-  height: 40vh;
+  position: relative;
+  height: 50vh;
   width: 100vw;
   text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
 }
