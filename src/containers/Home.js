@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-//import SearchBar from '../components/searchbar.js';
+import SearchBar from '../components/Searchbar.js';
 
 class Home extends Component {
   render () {
     return (
-        <div> <h1>vnjf</h1> </div>
+        <SearchBar />
     );
   }
 }
