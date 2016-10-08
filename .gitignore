@@ -7,3 +7,6 @@ node_modules
 
 #vim swap files
 *.swp
+
+# Bundle
+public/bundle.js
