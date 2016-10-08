@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap';
 
 class TripList extends Component {
   render() {
+    const { cities } = this.props;
     return (
         <Table>
           <thead>
@@ -12,10 +13,14 @@ class TripList extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Hong Kong</td>
-              <td><input type="number" min="1" max="30" step="1" value ="3" /></td>
-            </tr>
+            {cities.map((city) => {
+              return (  
+                <tr>
+                  <td>{ city.name }</td>
+                  <td><input type="number" min="1" max="30" step="1" value ="3" />{ city.days }</td>
+                </tr>
+              );                      
+            })}
           </tbody>
         </Table>
         );
