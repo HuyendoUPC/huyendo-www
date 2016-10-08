@@ -6,22 +6,22 @@ class TripList extends Component {
     const { cities } = this.props;
     return (
         <Table>
-          <thead>
-            <tr>
-              <th>Destination</th>
-              <th>Days Spent</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cities.map((city) => {
-              return (  
-                <tr>
-                  <td>{ city.name }</td>
-                  <td><input type="number" min="1" max="30" step="1" value ="3" />{ city.days }</td>
-                </tr>
-              );                      
-            })}
-          </tbody>
+        <thead>
+        <tr>
+        <th className="trips__destination">Destination</th>
+        <th>Days Spent</th>
+        </tr>
+        </thead>
+        <tbody>
+        {cities.map((city) => {
+                                return (  
+                                    <tr>
+                                    <td>{ city.name }</td>
+                                    <td><input type="number" min="1" max="30" step="1" value ={ city.days } /></td>
+                                    </tr>
+                                    );                      
+                              })}
+        </tbody>
         </Table>
         );
   }
