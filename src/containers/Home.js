@@ -48,6 +48,7 @@ class Home extends Component {
             <FormGroup bsSize="large">
               <FormControl type="text" placeholder="Search.." />
             </FormGroup>
+            <Searchbar />
             { this.renderInSearch() }
             <Checkbox ref="inOut" onChange={ this.toggleInSearch } >I don&#39;t want to end where I started</Checkbox>
           </div>
