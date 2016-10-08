@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'underscore';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as HomeActions from '../actions';
@@ -18,8 +19,11 @@ class Home extends Component {
   }
 
   toggleInSearch() {
+    const { dispatch, outCity } = this.props;
     let { inOut } = this.state;
-    console.log('toggle', inOut);
+    if (inOut) {
+      dispatch(HomeActions.setInCity(outCity.outCity));
+    }
     this.setState({
       inOut: !inOut
     });
@@ -39,7 +43,11 @@ class Home extends Component {
   }
 
   renderOutSearch() {
-    let { dispatch } = this.props;
+    let { dispatch, outCity, inCity } = this.props;
+    const { inOut } = this.state;
+    if (!_.isEmpty(outCity) && _.isEmpty(inCity)) {
+      dispatch(HomeActions.setInCity(outCity.outCity));
+    }
     return (
        <Searchbar placeholder="Departure city" dispatch={dispatch} action={HomeActions.setOutCity} />
     );
@@ -55,7 +63,6 @@ class Home extends Component {
 
   outCity() {
     const { outCity } = this.props;
-    console.log(outCity);
     return (
       <h3>{ outCity.outCity }</h3>    
     );
