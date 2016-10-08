@@ -5,15 +5,20 @@ class Find extends Component {
   constructor(props) {
     super(props);
     this.state = {loading: false};
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
+    const { cities, date, inCity, outCity, getTrip, dispatch } = this.props;
     console.log("hi");
     this.setState({
       loading: !this.state.loading,
       progress: 0.5,
     });
-    // Submit form
+    
+    dispatch(getTrip({
+      date: date
+    }));
   }
 
   render() {

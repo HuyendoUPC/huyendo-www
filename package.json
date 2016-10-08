@@ -32,8 +32,10 @@
     "react-redux": "^4.4.5",
     "react-search": "^2.0.3",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
     "underscore": "^1.8.3",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "whatwg-fetch": "^1.0.0"
   }
 }
