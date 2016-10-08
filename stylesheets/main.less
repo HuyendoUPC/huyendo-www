@@ -1,3 +1,60 @@
-h1 {
-  color: #b02335;
+@import "react-search.css";
+
+body {
+  background-color: #151515;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+}
+
+.welcome {
+  position: relative;
+  height: 50vh;
+  width: 100vw;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
+  &__search {
+    
+  }
+}
+
+.trips {
+  margin-top: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  background-color: #3c3c3c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  &__search {
+  }
+}
+
+.autocomplete__item {
+  color: #000;
 }
