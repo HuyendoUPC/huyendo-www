@@ -24,7 +24,7 @@ class TriplistItem extends Component {
         </td>
       </tr>
     );
-  }
+  } 
 }
 
 export default TriplistItem;
