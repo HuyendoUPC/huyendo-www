@@ -131,7 +131,7 @@ class Home extends Component {
   }
 
   render () {
-    const { cities, outCity, inCity, date, trip, dispatch, editDays } = this.props;
+    const { cities, outCity, inCity, date, trip, dispatch, editDays, removeCity } = this.props;
     const { localDate } = this.state;
     return (
         <div className="trips">
@@ -150,7 +150,7 @@ class Home extends Component {
           <div className="trips__list">
             <h3>Which cities do you want to travel to?</h3>
             { this.renderCitySearch() }
-            <TripList editDays={editDays} cities={ cities }/>
+            <TripList editDays={editDays} removeCity={removeCity} cities={ cities }/>
           </div>
           <div className="trips__find">
             <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} trip={trip} />
@@ -167,6 +167,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     editDays: (id, newDays) => {
       dispatch(HomeActions.editDays(id, newDays))
+    },
+    removeCity: (id) => {
+      dispatch(HomeActions.removeCity(id))
     },
     dispatch
   }
