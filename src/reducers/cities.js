@@ -20,7 +20,7 @@ const city = (state = {}, action) => {
       }
 
       return Object.assign({}, state, {
-        days: state.days++
+        days: parseInt(action.days)
       })
     default:
       return state;
@@ -35,9 +35,11 @@ const cities = (state = [], action) => {
         city(undefined, action)
       ];
     case EDIT_DAYS:
-      return state.map(c => {
-        city(c, action);
-      });
+      for (let i = 0; i < state.length; i++) {
+        let c = state[i];
+        state[i] = city(c, action);
+      }
+      return state;
     case REMOVE_CITY:
       return state.filter(c => {
         return c.id != action.id

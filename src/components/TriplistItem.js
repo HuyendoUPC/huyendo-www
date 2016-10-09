@@ -8,21 +8,14 @@ class TriplistItem extends Component {
     this.daysChanged = this.daysChanged.bind(this);
   }
 
-  componentWillMount() {
-    const { city } = this.props;
-    this.state = { name: city.name, id: city.id }
-  }
-
   daysChanged() {
-    const { dispatch, editDays } = this.props;
-    const { id } = this.state;
+    const { editDays, id } = this.props;
     let newDays = ReactDOM.findDOMNode(this.currDays).value;
-    let action = editDays(id, newDays);
-    dispatch(action);
+    editDays(id, newDays);
   }
 
   render () {
-    const { name } = this.state;
+    const { name } = this.props;
     return (
       <tr>
         <td>{ name }</td>

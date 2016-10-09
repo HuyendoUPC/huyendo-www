@@ -5,7 +5,6 @@ import _ from 'underscore';
 class TripResults extends Component {
   render () {
     const { trip } = this.props;
-    console.log('trip', trip);
     if (!_.isEmpty(trip)) {
       let trips = trip.trips;
       return (

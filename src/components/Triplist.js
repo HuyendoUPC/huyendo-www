@@ -6,7 +6,7 @@ import TriplistItem from './TriplistItem';
 
 class Triplist extends Component {
   render() {
-    const { cities } = this.props;
+    const { cities, editDays } = this.props;
     if (!_.isEmpty(cities)) {
       return (
           <Panel className="trip-results__panel" header="Trip Stops">
@@ -20,7 +20,7 @@ class Triplist extends Component {
           <tbody>
           {cities.map((city) => {
              return (  
-                 <TriplistItem city={city} editDays={editDays} dispatch={dispatch} /> 
+                 <TriplistItem key={city.id} name={city.name} id={city.id} editDays={editDays} /> 
               );                      
             })}
           </tbody>
