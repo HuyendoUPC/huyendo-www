@@ -5,13 +5,13 @@ import _ from 'underscore';
 class TripResults extends Component {
   render () {
     const { trip } = this.props;
-    console.log(trip);
+    console.log('trip', trip);
     if (!_.isEmpty(trip)) {
       let trips = trip.trips;
       return (
           <div>
           {trips.map((trip, i) => {
-            let title = `Alternative ${i}: £${trip.price}`;
+            let title = `Alternative ${i + 1}: £${trip.price}`;
             return (
               <Panel className="trip-results__panel" header={ title }>
                    <Table>
@@ -40,7 +40,7 @@ class TripResults extends Component {
                      </tbody>
                        </Table>
               </Panel>
-                );                        
+                );
           })}
           </div>
       );

@@ -15,11 +15,21 @@ import TripResults from '../components/TripResults';
 class Home extends Component {
   constructor(props) {
     super();
-    let now = new Date().toISOString();
-    this.state = { inOut: false, localDate: now };
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 2);
+    tomorrow = tomorrow.toISOString();
+    this.state = { inOut: false, localDate: tomorrow };
     this.toggleInSearch = this.toggleInSearch.bind(this);
     this.renderInSearch = this.renderInSearch.bind(this);
     this.dateChange = this.dateChange.bind(this);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 2);
+    tomorrow = tomorrow.toISOString();
+    dispatch(HomeActions.setDate(tomorrow));
   }
 
   toggleInSearch() {
@@ -109,7 +119,7 @@ class Home extends Component {
             <TripList editDays={HomeActions.editDays} dispatch={dispatch} cities={ cities }/>
           </div>
           <div className="trips__find">
-            <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} />
+            <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} trip={trip} />
           </div>
           <div className="trips__results">
             <TripResults trip={ trip }/>

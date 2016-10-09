@@ -1,12 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import LaddaButton, { XL, SLIDE_UP } from 'react-ladda';
 import _ from 'underscore';
+import { TRIP_FETCH_SUCCESS } from '../constants';
 
 class Find extends Component {
   constructor(props) {
     super(props);
     this.state = {loading: false};
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    const { trip } = nextProps;
+    if (trip.status && trip.status === TRIP_FETCH_SUCCESS) {
+      this.setState({
+        loading: false
+      });
+    }
   }
 
   formatName(name) {
