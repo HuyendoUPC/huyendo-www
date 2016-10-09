@@ -24,6 +24,17 @@ class Home extends Component {
     this.dateChange = this.dateChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { outCity } = nextProps;
+    const { dispatch, outCity: oldOut } = this.props;
+    const { inOut } = this.state;
+    if (!inOut && outCity.outCity && oldOut.outCity) {
+      if (oldOut.outCity !== outCity.outCity) {
+        dispatch(HomeActions.setInCity(outCity.outCity));
+      }
+    }
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     let tomorrow = new Date();
