@@ -19,9 +19,9 @@ class Triplist extends Component {
           </thead>
           <tbody>
           {cities.map((city) => {
-             return (  
-                 <TriplistItem key={city.id} name={city.name} id={city.id} editDays={editDays} /> 
-              );                      
+             return (
+                 <TriplistItem key={city.id} name={city.name} id={city.id} editDays={editDays} />
+              );
             })}
           </tbody>
           </Table>
