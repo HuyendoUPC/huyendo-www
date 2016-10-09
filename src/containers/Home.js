@@ -10,12 +10,13 @@ import DatePicker from 'react-bootstrap-date-picker';
 import TripList from '../components/Triplist';
 import Searchbar from '../components/Searchbar';
 import Find from '../components/Find';
+import TripResults from '../components/TripResults';
 
 class Home extends Component {
   constructor(props) {
     super();
     let now = new Date().toISOString();
-    this.state = { inOut: false, date: now };
+    this.state = { inOut: false, localDate: now };
     this.toggleInSearch = this.toggleInSearch.bind(this);
     this.renderInSearch = this.renderInSearch.bind(this);
     this.dateChange = this.dateChange.bind(this);
@@ -86,8 +87,8 @@ class Home extends Component {
   }
 
   render () {
-    const { cities, outCity, inCity } = this.props;
-    const { date } = this.state;
+    const { cities, outCity, inCity, date, trip, dispatch } = this.props;
+    const { localDate } = this.state;
     return (
         <div className="trips">
           <div className="trips__search">
@@ -99,7 +100,7 @@ class Home extends Component {
             <h4>Ending at: { this.inCity() }</h4>
             <h3>What date do you want do leave?</h3>
             <FormGroup>
-              <DatePicker className="datepicker" value={ date } onChange={this.dateChange} />
+              <DatePicker className="datepicker" value={ localDate } onChange={this.dateChange} />
             </FormGroup>
           </div>
           <div className="trips__list">
@@ -108,7 +109,10 @@ class Home extends Component {
             <TripList cities={ cities }/>
           </div>
           <div className="trips__find">
-            <Find />
+            <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} />
+          </div>
+          <div className="trips__results">
+            <TripResults trip={ trip }/>
           </div>
         </div>
     );
@@ -116,12 +120,13 @@ class Home extends Component {
 };
 
 const mapStateToProps = (state) => {
-  const { date, inCity, outCity, cities } = state;
+  const { date, inCity, outCity, cities, trip } = state;
   return {
     date,
     inCity,
     outCity,
-    cities
+    cities,
+    trip
   };
 }
 
