@@ -22,6 +22,7 @@ class Home extends Component {
     this.toggleInSearch = this.toggleInSearch.bind(this);
     this.renderInSearch = this.renderInSearch.bind(this);
     this.dateChange = this.dateChange.bind(this);
+    this.tripImpossible = this.tripImpossible.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -130,6 +131,24 @@ class Home extends Component {
     }
   }
 
+  tripImpossible() {
+    const { trip } = this.props;
+    console.log(trip.trips);
+    console.log(trip.trips === []);
+    if (trip.trips && (trip.trips.length === 0 || trip.trips === "Impossible to get route")) {
+      return (
+          <div>
+          Unfortunately this route is impossible.
+          </div>
+          );
+    } else {
+      return (
+          <div>
+          </div>
+          );
+    }
+  }
+
   render () {
     const { cities, outCity, inCity, date, trip, dispatch, editDays, removeCity } = this.props;
     const { localDate } = this.state;
@@ -154,6 +173,7 @@ class Home extends Component {
           </div>
           <div className="trips__find">
             <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} trip={trip} />
+            <h4>{this.tripImpossible()}</h4>
           </div>
           <div className="trips__results">
             <TripResults trip={ trip }/>
