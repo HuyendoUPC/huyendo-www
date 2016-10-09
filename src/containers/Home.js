@@ -98,7 +98,7 @@ class Home extends Component {
             <Checkbox ref="inOut" onChange={ this.toggleInSearch } >I don&#39;t want to end where I started</Checkbox>
             <h4>Flying from: { this.outCity() }</h4>
             <h4>Ending at: { this.inCity() }</h4>
-            <h3>What date do you want do leave?</h3>
+            <h3>What date do you want to leave?</h3>
             <FormGroup>
               <DatePicker className="datepicker" value={ localDate } onChange={this.dateChange} />
             </FormGroup>
