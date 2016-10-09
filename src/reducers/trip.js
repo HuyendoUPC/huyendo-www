@@ -7,8 +7,9 @@ import {
 const trip = (state = {}, action) => {
   switch (action.type) {
     case TRIP_FETCH_SUCCESS:
-      console.log(action);
+      console.log('trip action', action);
       return {
+        status: TRIP_FETCH_SUCCESS,
         trips: action.trips
       }
     default:
