@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Panel } from 'react-bootstrap';
+import _ from 'underscore';
 
 import TriplistItem from './TriplistItem';
 
