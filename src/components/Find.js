@@ -50,7 +50,7 @@ class Find extends Component {
         cities: formattedCities
       }));
     }
-    
+
   }
 
   render() {

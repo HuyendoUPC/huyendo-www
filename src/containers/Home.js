@@ -64,7 +64,7 @@ class Home extends Component {
           <Searchbar placeholder="Arrival City" dispatch={dispatch} action={HomeActions.setInCity} />
         </div>
       );
-    }  
+    }
   }
 
   renderOutSearch() {
@@ -81,7 +81,7 @@ class Home extends Component {
   renderCitySearch() {
     let { dispatch } = this.props;
     return (
-          
+
        <Searchbar placeholder="Add City" dispatch={dispatch} action={HomeActions.addCity} />
     );
   }
@@ -101,14 +101,14 @@ class Home extends Component {
         <div>
           <h4>Flying From/To:</h4>
           <h3>{ outCity.outCity }</h3>
-        </div>    
+        </div>
       );
     } else if (outCity.outCity && inOut) {
       return (
         <div>
           <h4>Flying From:</h4>
           <h3>{ outCity.outCity }</h3>
-        </div>    
+        </div>
       );
     } else {
       return (<div/>);
@@ -123,7 +123,7 @@ class Home extends Component {
         <div>
           <h4>Returning To:</h4>
           <h3>{ inCity.inCity }</h3>
-        </div>    
+        </div>
       );
     } else {
       return (<div/>);
