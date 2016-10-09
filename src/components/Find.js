@@ -11,7 +11,6 @@ class Find extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     const { trip } = nextProps;
     if (trip.status && trip.status === TRIP_FETCH_SUCCESS) {
       this.setState({
