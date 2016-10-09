@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Table } from 'react-bootstrap';
 
-class TripList extends Component {
+import TriplistItem from './TriplistItem';
+
+class Triplist extends Component {
   render() {
-    const { cities } = this.props;
+    const { cities, editDays, dispatch } = this.props;
     return (
         <table>
         <thead>
@@ -14,17 +16,14 @@ class TripList extends Component {
         </thead>
         <tbody>
         {cities.map((city) => {
-                                return (  
-                                    <tr>
-                                    <td>{ city.name }</td>
-                                    <td><input type="number" min="1" max="30" step="1" className="trips__numDays"/></td>
-                                    </tr>
-                                    );                      
-                              })}
+             return (  
+                 <TriplistItem city={city} editDays={editDays} dispatch={dispatch} /> 
+              );                      
+           })}
         </tbody>
         </table>
         );
   }
 };
 
-export default TripList;
+export default Triplist;

@@ -106,7 +106,7 @@ class Home extends Component {
           <div className="trips__list">
             <h3>Which cities do you want to travel to?</h3>
             { this.renderCitySearch() }
-            <TripList cities={ cities }/>
+            <TripList editDays={HomeActions.editDays} dispatch={dispatch} cities={ cities }/>
           </div>
           <div className="trips__find">
             <Find dispatch={dispatch} getTrip={HomeActions.getTrip} inCity={inCity} outCity={outCity} date={date} cities={cities} />

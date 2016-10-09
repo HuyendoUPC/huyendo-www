@@ -20,7 +20,7 @@ const city = (state = {}, action) => {
       }
 
       return Object.assign({}, state, {
-        days: action.days
+        days: state.days++
       })
     default:
       return state;
