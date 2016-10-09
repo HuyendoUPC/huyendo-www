@@ -95,16 +95,39 @@ class Home extends Component {
 
   outCity() {
     const { outCity } = this.props;
-    return (
-      <h3>{ outCity.outCity }</h3>    
-    );
+    const { inOut } = this.state;
+    if (outCity.outCity && !inOut) {
+      return (
+        <div>
+          <h4>Flying From/To:</h4>
+          <h3>{ outCity.outCity }</h3>
+        </div>    
+      );
+    } else if (outCity.outCity && inOut) {
+      return (
+        <div>
+          <h4>Flying From:</h4>
+          <h3>{ outCity.outCity }</h3>
+        </div>    
+      );
+    } else {
+      return (<div/>);
+    }
   }
 
   inCity() {
     const { inCity } = this.props;
-    return (
-      <h3>{ inCity.inCity }</h3>    
-    );
+    const { inOut } = this.state;
+    if (inCity.inCity && inOut) {
+      return (
+        <div>
+          <h4>Returning To:</h4>
+          <h3>{ inCity.inCity }</h3>
+        </div>    
+      );
+    } else {
+      return (<div/>);
+    }
   }
 
   render () {
@@ -117,9 +140,9 @@ class Home extends Component {
             { this.renderOutSearch() }
             { this.renderInSearch() }
             <Checkbox ref="inOut" onChange={ this.toggleInSearch } >I don&#39;t want to end where I started</Checkbox>
-            <h4>Flying from: { this.outCity() }</h4>
-            <h4>Ending at: { this.inCity() }</h4>
-            <h3>What date do you want to leave?</h3>
+            <div>{ this.outCity() }</div>
+            <div>{ this.inCity() }</div>
+            <h3>What date do you want do leave?</h3>
             <FormGroup>
               <DatePicker className="datepicker" value={ localDate } onChange={this.dateChange} />
             </FormGroup>
